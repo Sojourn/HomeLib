@@ -62,6 +62,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Containers\IntrusiveList.h" />
+    <ClInclude Include="Testing\IntrusiveListTest.h" />
+    <ClInclude Include="Testing\Test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Testing\IntrusiveListTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
