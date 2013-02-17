@@ -62,14 +62,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Common\Macros.h" />
     <ClInclude Include="Containers\IntrusiveList.h" />
+    <ClInclude Include="Memory\Allocator.h" />
+    <ClInclude Include="Memory\RegionAllocator.h" />
     <ClInclude Include="Testing\IntrusiveListTest.h" />
     <ClInclude Include="Testing\Test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Memory\RegionAllocator.cpp" />
     <ClCompile Include="Testing\IntrusiveListTest.cpp" />
+    <ClCompile Include="Testing\Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

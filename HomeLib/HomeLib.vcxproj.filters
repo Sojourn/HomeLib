@@ -22,6 +22,15 @@
     <Filter Include="Header Files\Testing">
       <UniqueIdentifier>{66165e37-6c0a-4383-a129-a0ef1cd52efe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Memory">
+      <UniqueIdentifier>{7340abe9-6d57-4254-9bbc-3207e2198450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Memory">
+      <UniqueIdentifier>{61af9bd1-15c3-45ae-bbc6-eb393498e46a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{19bf9ccf-b858-4bee-9af1-be5682aa0a80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Containers\IntrusiveList.h">
@@ -33,6 +42,15 @@
     <ClInclude Include="Testing\Test.h">
       <Filter>Header Files\Testing</Filter>
     </ClInclude>
+    <ClInclude Include="Memory\Allocator.h">
+      <Filter>Header Files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\RegionAllocator.h">
+      <Filter>Header Files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Macros.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -41,7 +59,10 @@
     <ClCompile Include="Testing\IntrusiveListTest.cpp">
       <Filter>Source Files\Testing</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="Memory\RegionAllocator.cpp">
+      <Filter>Source Files\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Testing\Test.cpp">
       <Filter>Source Files\Testing</Filter>
     </ClCompile>
   </ItemGroup>

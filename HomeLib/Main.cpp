@@ -1,8 +1,8 @@
 #include <iostream>
 #include <algorithm>
 
-#include "Testing\Test.h"
-#include "Testing\IntrusiveListTest.h"
+#include "Testing/Test.h"
+#include "Testing/IntrusiveListTest.h"
 
 int main(int argc, char **argv)
 {
