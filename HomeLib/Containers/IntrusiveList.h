@@ -100,13 +100,13 @@ public:
     reference front()
     {
         assert(!empty());
-        return *begin();
+        return *iterator(_head);
     }
 
     reference back()
     {
         assert(!empty());
-        return *end();
+        return *iterator(_tail);
     }
 
     iterator begin()
@@ -128,6 +128,12 @@ public:
     {
         return const_iterator(nullptr);
     }
+
+	// TODO
+	//template<class IterType>
+	//void insert(const_iterator insert_after, IterType _begin, IterType _end)
+	//{
+	//}
 
     void insert(const_iterator i, reference value)
     {
