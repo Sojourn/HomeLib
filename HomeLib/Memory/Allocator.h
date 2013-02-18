@@ -15,6 +15,12 @@ namespace Memory
 		Blob_t() : size(0), ptr(nullptr) {}
 	};
 
+	/// Global blob allocation function.
+	Blob_t Allocate(size_t size);
+
+	/// Global blob free function.
+	void Free(Blob_t &blob);
+
 	/// An allocator interface.
 	class Allocator
 	{
