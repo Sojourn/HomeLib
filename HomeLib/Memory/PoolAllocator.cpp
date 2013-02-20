@@ -1,6 +1,7 @@
 #include "PoolAllocator.h"
 
 #include <algorithm>
+#include <cstring>
 #include <cassert>
 
 Memory::PoolAllocator::PoolAllocator(size_t blobSize) :
@@ -48,7 +49,7 @@ Memory::Blob_t Memory::PoolAllocator::Allocate(size_t size)
 	}
 }
 
-void Memory::PoolAllocator::Destroy(Blob_t blob)
+void Memory::PoolAllocator::Free(Blob_t blob)
 {
 	// Add the blob to the free list
 	PoolObject_t *object = reinterpret_cast<PoolObject_t*>(blob.ptr - sizeof(PoolObject_t));
@@ -63,6 +64,7 @@ void Memory::PoolAllocator::AddBlock(size_t blobCount)
 	allocSize += sizeof(PoolBlock_t);
 	allocSize += blobCount * (sizeof(PoolObject_t) + _objectSize);
 	Blob_t blockBlob = Memory::Allocate(allocSize);
+	std::memset(blockBlob.ptr, 0, blockBlob.size);
 
 	// Register the block
 	PoolBlock_t *block = reinterpret_cast<PoolBlock_t*>(blockBlob.ptr);

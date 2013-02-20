@@ -16,7 +16,7 @@ struct ListItem
 // Create a type alias for a list of items
 typedef IntrusiveList<ListItem, offsetof(ListItem, link)> IntrusiveItemList;
 
-Test IntrusiveListTest()
+std::vector<std::string> Testing::TestIntrusiveList()
 {
 	Test test("IntrusiveList");
 
@@ -144,5 +144,5 @@ Test IntrusiveListTest()
 	};
 	test.AddEntry(insertTest);
 
-	return test;
+	return test.RunEntries();
 }

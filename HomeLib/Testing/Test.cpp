@@ -2,17 +2,17 @@
 #include <algorithm>
 #include <sstream>
 
-Test::Test(const std::string &name) :
+Testing::Test::Test(const std::string &name) :
 	_name(name)
 {
 }
 
-void Test::AddEntry(TestEntry &entry)
+void Testing::Test::AddEntry(TestEntry &entry)
 {
 	_tests.push_back(entry);
 }
 
-std::vector<std::string> Test::RunEntries()
+std::vector<std::string> Testing::Test::RunEntries()
 {
 	std::vector<std::string> result;
 	result.push_back("Testing  [" + _name + "]");

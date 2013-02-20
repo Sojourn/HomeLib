@@ -64,10 +64,12 @@
   <ItemGroup>
     <ClInclude Include="Common\Macros.h" />
     <ClInclude Include="Containers\IntrusiveList.h" />
+    <ClInclude Include="Containers\QuadTree.h" />
     <ClInclude Include="Memory\Allocator.h" />
     <ClInclude Include="Memory\PoolAllocator.h" />
     <ClInclude Include="Memory\RegionAllocator.h" />
     <ClInclude Include="Testing\IntrusiveListTest.h" />
+    <ClInclude Include="Testing\PoolAllocatorTest.h" />
     <ClInclude Include="Testing\Test.h" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +78,7 @@
     <ClCompile Include="Memory\PoolAllocator.cpp" />
     <ClCompile Include="Memory\RegionAllocator.cpp" />
     <ClCompile Include="Testing\IntrusiveListTest.cpp" />
+    <ClCompile Include="Testing\PoolAllocatorTest.cpp" />
     <ClCompile Include="Testing\Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

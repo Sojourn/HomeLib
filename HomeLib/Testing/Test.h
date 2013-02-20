@@ -7,26 +7,31 @@
 #include <cstdint>
 #include <tuple>
 
-struct TestEntry
+namespace Testing
 {
-	std::string name;
-	std::function<bool (void)> test;
-};
 
-class Test
-{
-public:
-	Test(const std::string &name);
+	struct TestEntry
+	{
+		std::string name;
+		std::function<bool (void)> test;
+	};
 
-	// Add a test entry
-	void AddEntry(TestEntry &entry);
+	class Test
+	{
+	public:
+		Test(const std::string &name);
 
-	// Run entries and return the results in a vector
-	std::vector<std::string> RunEntries();
+		// Add a test entry
+		void AddEntry(TestEntry &entry);
 
-private:
-	const std::string _name;
-	std::vector<TestEntry> _tests;
-};
+		// Run entries and return the results in a vector
+		std::vector<std::string> RunEntries();
+
+	private:
+		const std::string _name;
+		std::vector<TestEntry> _tests;
+	};
+
+}
 
 #endif // TEST_H

@@ -33,7 +33,7 @@ namespace Memory
 		~PoolAllocator();
 
 		virtual Blob_t Allocate(size_t size);
-		virtual void Destroy(Blob_t blob);
+		virtual void Free(Blob_t blob);
 
 	private:
 		void AddBlock(size_t objectCount);
