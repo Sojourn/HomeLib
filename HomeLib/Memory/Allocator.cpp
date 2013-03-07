@@ -2,17 +2,38 @@
 
 #include <cstdlib>
 
-Memory::Blob_t Memory::Allocate(size_t size)
+namespace Memory
 {
-	Blob_t result;
-	result.size = size;
-	result.ptr = reinterpret_cast<uint8_t*>(std::malloc(size));
-	return result;
+	class GlobalAllocator : public Allocator
+	{
+	public:
+		virtual Blob_t Allocate(size_t size)
+		{
+			Blob_t result;
+			result.size = size;
+			result.ptr = reinterpret_cast<uint8_t*>(std::malloc(size));
+			result.allocator = this;
+			return result;
+		}
+
+		virtual void Free(Blob_t blob)
+		{
+			std::free(blob.ptr);
+			blob.ptr = nullptr;
+			blob.size = 0;
+		}
+	};
+
+	static GlobalAllocator globalAllocator;
 }
 
-void Memory::Free(Blob_t &blob)
+
+Memory::Blob_t Memory::GlobalAllocate(size_t size)
 {
-	std::free(blob.ptr);
-	blob.ptr = nullptr;
-	blob.size = 0;
+	return globalAllocator.Allocate(size);
+}
+
+void Memory::GlobalFree(Blob_t &blob)
+{
+	globalAllocator.Free(blob);
 }

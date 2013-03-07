@@ -5,21 +5,23 @@
 
 namespace Memory
 {
+	class Allocator;
 
 	/// A region of memory.
 	struct Blob_t
 	{
 		size_t size;
 		uint8_t *ptr;
+		Allocator *allocator;
 
-		Blob_t() : size(0), ptr(nullptr) {}
+		Blob_t() : size(0), ptr(nullptr), allocator(nullptr) {}
 	};
 
 	/// Global blob allocation function.
-	Blob_t Allocate(size_t size);
+	Blob_t GlobalAllocate(size_t size);
 
 	/// Global blob free function.
-	void Free(Blob_t &blob);
+	void GlobalFree(Blob_t &blob);
 
 	/// An allocator interface.
 	class Allocator

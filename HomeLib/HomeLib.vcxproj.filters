@@ -60,6 +60,12 @@
     <ClInclude Include="Testing\PoolAllocatorTest.h">
       <Filter>Header Files\Testing</Filter>
     </ClInclude>
+    <ClInclude Include="Containers\DynamicArray.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\Array2D.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

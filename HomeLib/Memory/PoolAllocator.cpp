@@ -20,7 +20,7 @@ Memory::PoolAllocator::~PoolAllocator()
 		// FIXME: calculate blob size
 		Blob_t blob;
 		blob.ptr = reinterpret_cast<uint8_t*>(block);
-		Memory::Free(blob);
+		Memory::GlobalFree(blob);
 	}
 }
 
@@ -63,7 +63,7 @@ void Memory::PoolAllocator::AddBlock(size_t blobCount)
 	size_t allocSize = 0;
 	allocSize += sizeof(PoolBlock_t);
 	allocSize += blobCount * (sizeof(PoolObject_t) + _objectSize);
-	Blob_t blockBlob = Memory::Allocate(allocSize);
+	Blob_t blockBlob = Memory::GlobalAllocate(allocSize);
 	std::memset(blockBlob.ptr, 0, blockBlob.size);
 
 	// Register the block

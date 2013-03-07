@@ -63,6 +63,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Common\Macros.h" />
+    <ClInclude Include="Containers\Array2D.h" />
+    <ClInclude Include="Containers\DynamicArray.h" />
     <ClInclude Include="Containers\IntrusiveList.h" />
     <ClInclude Include="Containers\QuadTree.h" />
     <ClInclude Include="Memory\Allocator.h" />
