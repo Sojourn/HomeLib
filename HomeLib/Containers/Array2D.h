@@ -43,7 +43,7 @@ namespace Container
 		inline T** data();
 
 		// Return a const pointer to the data store.
-		inline const T** data() const;
+		inline T** const data() const;
 
 		// Return a reference to the element at the location. Bounds checked.
 		inline T& at(size_t x, size_t y);
@@ -91,7 +91,7 @@ Container::Array2D<T>::Array2D(const Array2D<T> &other) :
 	_height(0),
 	_array(nullptr)
 {
-	if((other.width() != width()) || (other.height != height()))
+	if((other.width() != width()) || (other.height() != height()))
 	{
 		resize(other.width(), other.height());
 	}
@@ -110,7 +110,7 @@ const Container::Array2D<T> &Container::Array2D<T>::operator=(const Array2D<T> &
 {
 	if(this != &other)
 	{
-		if((other.width() != width()) || (other.height != height()))
+		if((other.width() != width()) || (other.height() != height()))
 		{
 			resize(other.width(), other.height());
 		}
@@ -139,10 +139,7 @@ void Container::Array2D<T>::resize(size_t width, size_t height)
 	assert(width > 0);
 	assert(height > 0);
 
-	if(_array)
-	{
-		release();
-	}
+	release();
 
 	_width = width;
 	_height = height;
@@ -171,13 +168,13 @@ size_t Container::Array2D<T>::height() const
 template<class T>
 T** Container::Array2D<T>::data()
 {
-	return _data;
+	return _array;
 }
 
 template<class T>
-const T** Container::Array2D<T>::data() const
+T** const Container::Array2D<T>::data() const
 {
-	return _data;
+	return _array;
 }
 
 template<class T>
@@ -185,7 +182,7 @@ T& Container::Array2D<T>::at(size_t x, size_t y)
 {
 	assert((x >= 0) && (x < width()));
 	assert((y >= 0) && (y < height()));
-	assert(_array != nullptr);
+	assert(data() != nullptr);
 	return (*this)[y][x];
 }
 
@@ -194,7 +191,7 @@ const T& Container::Array2D<T>::at(size_t x, size_t y) const
 {
 	assert((x >= 0) && (x < width()));
 	assert((y >= 0) && (y < height()));
-	assert(_array != nullptr);
+	assert(data() != nullptr);
 	return (*this)[y][x];
 }
 
@@ -213,8 +210,11 @@ const T* Container::Array2D<T>::operator[](size_t y) const
 template<class T>
 void Container::Array2D<T>::release()
 {
-	delete [] _array[0];
-	delete [] _array;
+	if(data() != nullptr)
+	{
+		delete [] _array[0];
+		delete [] _array;
+	}
 
 	_width = 0;
 	_height = 0;
